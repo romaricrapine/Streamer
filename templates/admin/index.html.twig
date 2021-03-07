@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <h1>Dashboard Admin</h1>
+
+    {% for message in app.flashes('success') %}
+    <h1>{{ message }}</h1>
+    {% endfor %}
+
+    {% for streamers in streamer %}
+        <table>
+        <thead>
+        <tr>
+            <th>Nom du streamer</th>
+            <th>Lien Twitch</th>
+            <th>Pseudo Discord</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ streamers.name }}</td>
+            <td><a href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.name }}</a></td>
+            <td>{{ streamers.discord }}</td>
+            <td><a href="{{ path('admin_streamer_edit', {id: streamers.id}) }}">Modifier</a></td>
+            <td>
+                <form method="POST" action="{{ path('admin_streamer_delete', {id: streamers.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir supprimer ce streamer ?')">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ streamers.id) }}">
+                    <button>Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    {% endfor %}
+
+    <a href="{{ path('admin_streamer_new') }}">Crée un streamer</a>
+{% endblock %}
