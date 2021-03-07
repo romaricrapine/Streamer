@@ -1,31 +1,33 @@
 <!doctype html>
 <html lang="FR-fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
 
-    <nav>
-        <h1>Menu de nav pour le dev</h1>
-        <a href="{{ path('home_app') }}">Home</a>
-        <a href="{{ path('every_streamer_app') }}">All Streamer</a>
-        {#        <a href="{{ path('streamer_app') }}"></a>#}
-        <a href="{{ path('admin_app') }}">Admin</a>
-    </nav>
+{# f9fbc0a1a3fdff62304ae250efde7cbd #}
 
-        {% block body %}
+<nav>
+    <h1>Menu de nav pour le dev</h1>
+    <a href="{{ path('home_app') }}">Home</a>
+    <a href="{{ path('every_streamer_app') }}">All Streamer</a>
+    {# <a href="{{ path('streamer_app') }}"></a> #}
+    <a href="{{ path('admin_app') }}">Admin</a>
+</nav>
 
-        {% endblock %}
+{% block body %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
 </html>
