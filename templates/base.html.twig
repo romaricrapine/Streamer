@@ -12,17 +12,10 @@
 </head>
 <body>
 
-<nav>
-    <h1>Menu de nav pour le dev</h1>
-    <a href="{{ path('home_app') }}">Home</a>
-    <a href="{{ path('every_streamer_app') }}">All Streamer</a>
-    {# <a href="{{ path('streamer_app') }}"></a> #}
-    <a href="{{ path('admin_app') }}">Admin</a>
-</nav>
-
 {% block body %}
 
 {% endblock %}
+{% include("block/_footer.html.twig") %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}

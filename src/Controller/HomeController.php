@@ -20,9 +20,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home_app")
      */
-    public function index(): Response
+    public function index(StreamerRepository $streamerRepository): Response
     {
         return $this->render('home/index.html.twig', [
+            'streamer' => $streamerRepository->findAll(),
         ]);
     }
 
