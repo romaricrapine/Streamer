@@ -7,5 +7,7 @@
     {% for streamers in streamer %}
     <p>Le nom : {{ streamers.name }}</p>
     <p>Le twitch de <a href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.name }}</a></p>
+    <p>Le twitter de <a href="https://twitter.com/{{ streamers.twitter }}">{{ streamers.name }}</a></p>
+    <p>L'instagram de <a href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.name }}</a></p>
     {% endfor %}
 {% endblock %}

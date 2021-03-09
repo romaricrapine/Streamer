@@ -9,7 +9,6 @@
 }
 
 body {
-  color: $white-text;
   background-color: $bg;
   font-family: roboto, helvetica, sans-serif, arial, verdana, tahoma;
   overflow-x: hidden;
@@ -21,10 +20,14 @@ body {
   height: 100vh;
 }
 
-a, p, h1, h2, h3, h4, h5, h6, {
-  color: $white-text;
-}
-
 ul, ul li, a {
   list-style-type: none;
+}
+
+.text-black {
+  color: $black-text;
+}
+
+.text-white {
+  color: $white-text;
 }

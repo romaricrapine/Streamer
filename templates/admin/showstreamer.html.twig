@@ -383,9 +383,9 @@
         }
 
         [data-component=navbar] .collapsing {
-            -webkit-transition: height .3s ease;
-            -o-transition: height .3s ease;
-            transition: height .3s ease;
+            -webkit-transition: height 0.3s ease;
+            -o-transition: height 0.3s ease;
+            transition: height 0.3s ease;
         }
 
         [data-component=navbar] .navbar-brand {
@@ -545,7 +545,7 @@
             width: 75px;
             top: 60px;
             overflow: hidden;
-            transition: width .3s;
+            transition: width 0.5s;
         }
 
         [data-component=sidebar] .first-menu a {
@@ -588,13 +588,13 @@
         [data-component=sidebar] .submenu {
             position: fixed;
             left: 160px;
-            width: 300px;
+            width: 195px;
             top: 60px;
             background-color: #009fff;
             height: 100vw;
             opacity: 0;
             visibility: hidden;
-            transition: 150ms opacity 150ms, 150ms, visibility 150ms;
+            transition: 600ms opacity 600ms, 600ms, visibility 600ms;
         }
 
         [data-component=sidebar] .submenu .list-group-item {
@@ -615,7 +615,7 @@
             width: 195px;
             opacity: 0;
             visibility: hidden;
-            transition: 150ms opacity 150ms, 150ms, visibility 150ms;
+            transition: 600ms opacity 600ms, 600ms, visibility 600ms;
         }
 
         [data-component=sidebar] .sub-submenu a {
@@ -655,6 +655,17 @@
             color: #292a2c;
         }
 
+        .list-group-item button {
+            background: none;
+            border: none;
+            color: #000
+        }
+
+        .list-group-item button:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
     </style>
 
     <div data-component="navbar">
@@ -662,25 +673,51 @@
         <nav class="navbar p-0 fixed-top">
             <button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"
                     data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="true"
-                    aria-label="Toggle navigation" disabled><span class="ml-3">Les Petits Streamer FR </span>
+                    aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i><span class="ml-3">Dashboard</span>
             </button>
 
-            <div><a class="navbar-brand px-1" href="{{ path('home_app') }}"><img
+            <div><a class="navbar-brand px-1" href="{{ path('admin_app') }}"><img
                             src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
                             class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
 
-            </div> <!-- /.right-links -->
+                <div class="right-links float-right mr-4">
+                    <a href="{{ path('home_app') }}" class="home"><i class="fa fa-home mr-3"></i></a>
+                    <div class="d-inline dropdown">
+                        <a class="dropdown-toggle px-2" id="messages" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" href="#">
+                            <img src="https://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&amp;d=mm&amp;r=g">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="messages">
+                            <a class="dropdown-item" href="#">Modifier mon Profil</a>
+                            <a class="dropdown-item" href="#">Se déconnecter</a>
+                        </div> <!-- /.dropdown-menu -->
+                    </div> <!-- /.dropdown -->
 
-    <div class="megamenu">
-        <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
-            <div class="megamenu-links">
-                <div class="row">
+                </div> <!-- /.right-links -->
 
-                </div> <!-- /.row -->
-            </div> <!-- /.megamenu-links -->
-        </div>
-    </div>
-    </nav>
+            </div>
+
+            <div class="megamenu">
+                <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
+                    <div class="megamenu-links text-black">
+                        <h2>Les Informations de {{ stream.name }}</h2>
+                        <p>Twitch : {{ stream.twitch }}</p>
+                        <p>Twitch : {{ stream.discord }}</p>
+                        <p>Twitch : {{ stream.twitter }}</p>
+                        <p>Twitch : {{ stream.snapchat}}</p>
+                        <p>Twitch : {{ stream.instagram }}</p>
+                        <a href="{{ path('admin_streamer_edit', {id: stream.id}) }}">Modifier {{ stream.name }}</a>
+                        <form method="POST" action="{{ path('admin_streamer_delete', {id: stream.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir supprimer ce streamer ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ stream.id) }}">
+                            <button>Supprimer {{ stream.name }}</button>
+                        </form>
+                    </div> <!-- /.megamenu-links -->
+
+                </div>
+            </div>
+        </nav>
     </div> <!-- END TOP NAVBAR -->
 
     <div data-component="sidebar">
@@ -694,36 +731,7 @@
 
                         <ul class="list-group flex-column d-inline-block submenu">
                             <li class="list-group-item pl-4">
-                                <a href="{{ path('streamer_app', {id: streamers.id}) }}">Information
-                                    de {{ streamers.name }}</a>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Regarder sur Twitch : <a
-                                            href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Ajouter sur Discord : {{ streamers.discord }}</a></p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Suivre sur Twitter : <a
-                                            href="https://www.twitter.com/{{ streamers.twitter }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Ajouter sur Snapchat : <a
-                                            href="https://www.snapchat.com/add/{{ streamers.snapchat }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Suivre sur Instagram : <a
-                                            href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Twitter : <a
-                                            href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.name }}</a>
-                                </p>
+                                <a href="{{ path('admin_streamer_show', {id: streamers.id}) }}" class="">Information de {{ streamers.name }}</a>
                             </li>
                         </ul> <!-- /.submenu -->
                     </li> <!-- /.list-group-item -->
@@ -734,7 +742,7 @@
 
     <div class="wp-content">
         <div class="container-fluid">
-            Mettre quelques choses ici
+            CONTENT GOES HERE
         </div>
     </div>
 

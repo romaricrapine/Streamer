@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Streamer;
 use App\Repository\StreamerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,11 +39,13 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/streamer{id}", name="streamer_app")
+     * @Route("/streamer/{id}", name="streamer_app")
      */
-    public function showStreamer(): Response
+    public function showStreamer(Streamer $streamer, StreamerRepository $streamerRepository): Response
     {
         return $this->render('home/streamer.html.twig', [
+            'stream' => $streamer,
+            'streamer' => $streamerRepository->findAll()
         ]);
     }
 }

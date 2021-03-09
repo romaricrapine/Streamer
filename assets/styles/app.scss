@@ -2,3 +2,30 @@
 @import "default";
 @import "navbar";
 @import "footer";
+
+.list-group-item button {
+  background: none;
+  border: none;
+  color: #fff
+}
+
+.list-group-item button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.center {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(50%,50%);
+}
+
+.center input {
+  background: none;
+  border: none;
+}
+
+.list-group-item p {
+  color: $white-text;
+}

@@ -29,6 +29,17 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/show_streamer/{id}", name="admin_streamer_show")
+     */
+    public function showStreamer(Streamer $streamer, StreamerRepository $streamerRepository): Response
+    {
+        return $this->render('admin/showstreamer.html.twig', [
+            'stream' => $streamer,
+            'streamer' => $streamerRepository->findAll()
+        ]);
+    }
+
+    /**
      * @Route("/admin/new_streamer", name="admin_streamer_new")
      */
     public function newStreamer(Request $request): Response
