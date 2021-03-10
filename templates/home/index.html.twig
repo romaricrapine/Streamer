@@ -697,34 +697,55 @@
                                 <a href="{{ path('streamer_app', {id: streamers.id}) }}">Information
                                     de {{ streamers.name }}</a>
                             </li>
-                            <li class="list-group-item pl-4">
-                                <p>Regarder sur Twitch : <a
-                                            href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Ajouter sur Discord : {{ streamers.discord }}</a></p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Suivre sur Twitter : <a
-                                            href="https://www.twitter.com/{{ streamers.twitter }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Ajouter sur Snapchat : <a
-                                            href="https://www.snapchat.com/add/{{ streamers.snapchat }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Suivre sur Instagram : <a
-                                            href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
-                            <li class="list-group-item pl-4">
-                                <p>Twitter : <a
-                                            href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.name }}</a>
-                                </p>
-                            </li>
+                            {% if streamers.twitch %}
+                                <li class="list-group-item pl-4">
+                                    <p>Regarder sur Twitch :
+                                        <a href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.twitch }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.discord %}
+                                <li class="list-group-item pl-4">
+                                    <p>Ajouter sur Discord : <br>
+                                        {{ streamers.discord }}
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.twitter %}
+                                <li class="list-group-item pl-4">
+                                    <p>Suivre sur Twitter :
+                                        <a href="https://www.twitter.com/{{ streamers.twitter }}">{{ streamers.twitter }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.snapchat %}
+                                <li class="list-group-item pl-4">
+                                    <p>Ajouter sur Snapchat :
+                                        <a href="https://www.snapchat.com/add/{{ streamers.snapchat }}">{{ streamers.snapchat }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.instagram %}
+                                <li class="list-group-item pl-4">
+                                    <p>Suivre sur Instagram :
+                                        <a href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.instagram }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.youtube %}
+                                <li class="list-group-item pl-4">
+                                    <p>Regarder sur Youtube :
+                                        <a href="{{ streamers.youtube }}">{{ streamers.name }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.donation %}
+                                <li class="list-group-item pl-4">
+                                    <p>Faire un don à
+                                        <a href="{{ streamers.donation }}">{{ streamers.name }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
                         </ul> <!-- /.submenu -->
                     </li> <!-- /.list-group-item -->
                 {% endfor %}

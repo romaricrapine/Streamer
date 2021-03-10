@@ -702,13 +702,54 @@
                 <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
                     <div class="megamenu-links text-black">
                         <h2>Les Informations de {{ stream.name }}</h2>
-                        <p>Twitch : {{ stream.twitch }}</p>
-                        <p>Twitch : {{ stream.discord }}</p>
-                        <p>Twitch : {{ stream.twitter }}</p>
-                        <p>Twitch : {{ stream.snapchat}}</p>
-                        <p>Twitch : {{ stream.instagram }}</p>
+                        {% if stream.twitch %}
+                            <p>Regarder sur Twitch :
+                                <a href="https://www.twitch.tv/{{ stream.twitch }}">{{ stream.twitch }}</a>
+                            </p>
+                        {% endif %}
+                        {% if stream.discord %}
+                            <p>Ajouter sur Discord :
+                                {{ stream.discord }}
+                            </p>
+                        {% endif %}
+                        {% if stream.twitter %}
+                            <p>Suivre sur Twitter :
+                                <a href="https://www.twitter.com/{{ stream.twitter }}">{{ stream.twitter }}</a>
+                            </p>
+                        {% endif %}
+                        {% if stream.snapchat %}
+                            <p>Ajouter sur Snapchat :
+                                <a href="https://www.snapchat.com/add/{{ stream.snapchat }}">{{ stream.snapchat }}</a>
+                            </p>
+                        {% endif %}
+                        {% if stream.instagram %}
+                            <p>Suivre sur Instagram :
+                                <a href="https://www.instagram.com/{{ stream.instagram }}">{{ stream.instagram }}</a>
+                            </p>
+                        {% endif %}
+                        {% if stream.youtube %}
+                            <p>Regarder sur Youtube :
+                                <a href="{{ stream.youtube }}">{{ stream.name }}</a>
+                            </p>
+                        {% endif %}
+                        {% if stream.donation %}
+                            <p>Faire un don à {{ stream.name }} :
+                                <a href="{{ stream.donation }}">{{ stream.name }}</a>
+                            </p>
+                        {% endif %}
+                        {% if stream.description %}
+                            <p>Description de {{ stream.name }} :
+                                <span>{{ stream.description }}</span>
+                            </p>
+                        {% endif %}
+                        {% if stream.bio %}
+                            <p>Bio de {{ stream.name }} :
+                                <span>{{ stream.bio }}</span>
+                            </p>
+                        {% endif %}
                         <a href="{{ path('admin_streamer_edit', {id: stream.id}) }}">Modifier {{ stream.name }}</a>
-                        <form method="POST" action="{{ path('admin_streamer_delete', {id: stream.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir supprimer ce streamer ?')">
+                        <form method="POST" action="{{ path('admin_streamer_delete', {id: stream.id}) }}"
+                              onsubmit="return confirm('Êtes vous sur de vouloir supprimer ce streamer ?')">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ stream.id) }}">
                             <button>Supprimer {{ stream.name }}</button>
@@ -731,7 +772,8 @@
 
                         <ul class="list-group flex-column d-inline-block submenu">
                             <li class="list-group-item pl-4">
-                                <a href="{{ path('admin_streamer_show', {id: streamers.id}) }}" class="">Information de {{ streamers.name }}</a>
+                                <a href="{{ path('admin_streamer_show', {id: streamers.id}) }}" class="">Information
+                                    de {{ streamers.name }}</a>
                             </li>
                         </ul> <!-- /.submenu -->
                     </li> <!-- /.list-group-item -->

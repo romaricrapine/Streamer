@@ -47,6 +47,26 @@ class Streamer
      */
     private $instagram;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $youtube;
+
+    /**
+     * @ORM\Column(type="text", length=1000)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $donation;
+
+    /**
+     * @ORM\Column(type="text", length=1000)
+     */
+    private $bio;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +140,54 @@ class Streamer
     public function setInstagram(string $instagram): self
     {
         $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    public function getYoutube(): ?string
+    {
+        return $this->youtube;
+    }
+
+    public function setYoutube(string $youtube): self
+    {
+        $this->youtube = $youtube;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDonation(): ?string
+    {
+        return $this->donation;
+    }
+
+    public function setDonation(string $donation): self
+    {
+        $this->donation = $donation;
+
+        return $this;
+    }
+
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    public function setBio(string $bio): self
+    {
+        $this->bio = $bio;
 
         return $this;
     }

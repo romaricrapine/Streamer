@@ -18,6 +18,10 @@ class StreamerType extends AbstractType
             ->add('twitter')
             ->add('snapchat')
             ->add('instagram')
+            ->add('youtube')
+            ->add('description')
+            ->add('donation')
+            ->add('bio')
         ;
     }
 

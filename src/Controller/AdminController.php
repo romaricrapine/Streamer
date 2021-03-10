@@ -42,7 +42,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/new_streamer", name="admin_streamer_new")
      */
-    public function newStreamer(Request $request): Response
+    public function newStreamer(Request $request, StreamerRepository $streamerRepository): Response
     {
         $streamer = new Streamer();
         $form = $this->createForm(StreamerType::class, $streamer);
@@ -55,15 +55,16 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_app');
         }
         return $this->render('admin/newstreamer.html.twig', [
-            'streamer' => $streamer,
+            'streamers' => $streamer,
             'form' => $form->createView(),
+            'streamer' => $streamerRepository->findAll()
         ]);
     }
 
     /**
      * @Route("/admin/edit_streamer/{id}", name="admin_streamer_edit")
      */
-    public function editStreamer(Streamer $streamer,Request $request)
+    public function editStreamer(Streamer $streamer,Request $request, StreamerRepository $streamerRepository)
     {
         $form = $this->createForm(StreamerType::class, $streamer);
         $form->handleRequest($request);
@@ -75,8 +76,9 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/editstreamer.html.twig', [
-            'streamer' => $streamer,
+            'streamers' => $streamer,
             'form' => $form->createView(),
+            'streamer' => $streamerRepository->findAll()
         ]);
     }
 

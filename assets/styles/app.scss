@@ -29,3 +29,253 @@
 .list-group-item p {
   color: $white-text;
 }
+
+.text-center {
+  text-align: center;
+}
+
+body {
+  background-color: #EEEEEE;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 25px 0;
+}
+
+.card-container .card-info {
+  position: relative;
+  width: 500px;
+  height: 200px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.card-container .card-info:before {
+  content: "";
+  z-index: 99;
+  position: absolute;
+  top: -10px;
+  left: 32px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background-color: #E6E5E1;
+}
+
+.card-container .card-info:after {
+  content: "";
+  z-index: 99;
+  position: absolute;
+  bottom: -10px;
+  left: 32px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background-color: #E6E5E1;
+}
+
+.card-container .card-info ul {
+  z-index: 99;
+  position: absolute;
+  left: 39px;
+  top: 5px;
+  list-style-type: none;
+}
+
+.card-container .card-info ul li {
+  width: 2px;
+  height: 2px;
+  border-radius: 2px;
+  margin: 6px 0;
+  background-color: #E6E5E1;
+}
+
+.card-container .card-info h2 {
+  z-index: 99;
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  bottom: 0;
+  right: 150px;
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  margin: unset;
+}
+
+.card-container .card-info .fa-arrow-right {
+  z-index: 100;
+  position: absolute;
+  right: 75px;
+  bottom: 25px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.card-container .card-info p {
+  z-index: 99;
+  position: absolute;
+  top: 20px;
+  right: 70px;
+  color: #333;
+  opacity: 0.7;
+  font-size: 12px;
+  letter-spacing: 1px;
+  writing-mode: vertical-lr;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.card-container .card-info .pic {
+  z-index: 100;
+  width: 400px;
+  height: 200px;
+  background-image: url("http://www.lachapelledebrain.fr/wp-content/uploads/2020/10/instagram.jpg");
+  background-size: 100% 100%;
+  filter: grayscale(100%);
+}
+
+.card-container .card-info:hover i {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.card-container .discord button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #344581;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.card-container .twitter button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #1da1f3;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.card-container .snapchat button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #f5ed1e;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.card-container .instagram button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #d14471;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.card-container .youtube button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #ca1d1f;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.card-container .donation button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #81f4d3;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.card-container .card-info:hover button {
+  transform: scale(16.5);
+}
+
+.card-container .card-info:hover p {
+  color: #fff;
+}
+
+.card-container .card-info:hover .pic {
+  filter: grayscale(0);
+}
+
+.card-container .discord .pic {
+  background-image: url("https://sospc.name/wp-content/uploads/2017/08/Discord-sospc.name_.png");
+  background-size: cover;
+}
+
+.card-container .twitter .pic {
+  background-image: url("https://www.leptidigital.fr/wp-content/uploads/2018/03/twitter-signets-bookmark.png");
+  background-size: cover;
+}
+
+.card-container .snapchat .pic {
+  background-image: url("https://www.snapchat.com/global/social-lg.jpg");
+  background-size: cover;
+}
+
+.card-container .instagram .pic {
+  background-image: url("https://worldissmall.fr/wp-content/uploads/2019/09/instagram-banner-01.png");
+  background-size: cover;
+}
+
+.card-container .youtube .pic {
+  background-image: url("https://www.numerama.com/wp-content/uploads/2019/09/logo-youtube-noms-tech.jpg");
+  background-size: cover;
+}
+
+.card-container .donation .pic {
+  background-image: url("https://image.jeuxvideo.com/medias-md/156966/1569659186-1606-card.jpg");
+  background-size: cover;
+}
