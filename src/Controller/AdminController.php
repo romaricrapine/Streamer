@@ -96,6 +96,7 @@ class AdminController extends AbstractController
         }
         return $this->redirectToRoute('admin_app');
     }
+
     /**
      * @Route("/admin/support", name="admin_support")
      */
@@ -127,6 +128,4 @@ class AdminController extends AbstractController
             'streamer' => $streamerRepository->findAll(),
         ]);
     }
-
-
 }
