@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Streamer;
+use App\Entity\Support;
 use App\Form\StreamerType;
 use App\Repository\StreamerRepository;
+use App\Repository\SupportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -94,5 +96,37 @@ class AdminController extends AbstractController
         }
         return $this->redirectToRoute('admin_app');
     }
+    /**
+     * @Route("/admin/support", name="admin_support")
+     */
+    public function support(SupportRepository $supportRepository, StreamerRepository $streamerRepository): Response
+    {
+        return $this->render('admin/support.html.twig', [
+            'support' => $supportRepository->findAll(),
+            'streamer' => $streamerRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/support/{id}", name="admin_support_show")
+     */
+    public function supportShow(Support $support, StreamerRepository $streamerRepository): Response
+    {
+        return $this->render('admin/supportshow.html.twig', [
+            'support' => $support,
+            'streamer' => $streamerRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/every_streamer", name="admin_every_streamer")
+     */
+    public function streamerShow(StreamerRepository $streamerRepository): Response
+    {
+        return $this->render('admin/everystreamer.html.twig', [
+            'streamer' => $streamerRepository->findAll(),
+        ]);
+    }
+
 
 }
