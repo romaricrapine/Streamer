@@ -6,7 +6,13 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
 
     <style>
         @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
@@ -675,7 +681,7 @@
             <button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"
                     data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="true"
                     aria-label="Toggle navigation" disabled>
-                <a href="{{ path('admin_app') }}" style="text-decoration: none"><span class="ml-3">{{ stream.name }}</span></a>
+                <a href="{{ path('admin_app') }}" style="text-decoration: none"><span class="ml-3">Dashboard</span></a>
             </button>
 
             <div><a class="navbar-brand px-1" href="{{ path('admin_app') }}"><img
@@ -702,64 +708,48 @@
             <div class="megamenu">
                 <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
                     <div class="megamenu-links text-black">
-                        <ul>
-                            {% for streamers in streamer %}
-                                    <ul>
-                                        {% if streamers.twitch %}
-                                            <li>
-                                                <p>Regarder sur Twitch :
-                                                    <a href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.twitch }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.discord %}
-                                            <li>
-                                                <p>Ajouter sur Discord : <br>
-                                                    {{ streamers.discord }}
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.twitter %}
-                                            <li>
-                                                <p>Suivre sur Twitter :
-                                                    <a href="https://www.twitter.com/{{ streamers.twitter }}">{{ streamers.twitter }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.snapchat %}
-                                            <li>
-                                                <p>Ajouter sur Snapchat :
-                                                    <a href="https://www.snapchat.com/add/{{ streamers.snapchat }}">{{ streamers.snapchat }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.instagram %}
-                                            <li>
-                                                <p>Suivre sur Instagram :
-                                                    <a href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.instagram }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.youtube %}
-                                            <li>
-                                                <p>Regarder sur Youtube :
-                                                    <a href="{{ streamers.youtube }}">{{ streamers.name }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.donation %}
-                                            <li>
-                                                <p>Faire un don à
-                                                    <a href="{{ streamers.donation }}">{{ streamers.name }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                    </ul> <!-- /.submenu -->
-                                <a href="{{ path('admin_streamer_edit', {id: streamers.id}) }}">Modifier</a>
-                            {% endfor %}
-                        </ul> <!-- /.first-menu -->
+                        <div class="limiter">
+                            <div class="container-table100">
+                                <div class="wrap-table100">
+                                    <div class="table100 ver1 m-b-110">
+                                        <div class="table100-head">
+                                            <table>
+                                                <thead>
+                                                <tr class="row100 head">
+                                                    <th class="cell100 column1">Nom/Prénom/Pseudo</th>
+                                                    <th class="cell100 column2">Sujet</th>
+                                                    <th class="cell100 column3">Reçus le </th>
+                                                    <th class="cell100 column4">Action</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        {% for supports in support %}
+                                        <div class="table100-body js-pscroll">
+                                            <table>
+                                                <tbody>
+                                                <tr class="row100 body">
+                                                    <td class="cell100 column1">{{ supports.name }}</td>
+                                                    <td class="cell100 column2">{{ supports.subject }}</td>
+                                                    <td class="cell100 column3">{{ supports.createdAt }}</td>
+                                                    <td class="cell100 column4">
+                                                        <a href="{{ path('admin_support_show', {id: supports.id}) }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                             width="48" height="48"
+                                                             viewBox="0 0 172 172"
+                                                             style=" fill:#000000;"><defs><linearGradient x1="76.33217" y1="76.33217" x2="97.66017" y2="97.66017" gradientUnits="userSpaceOnUse" id="color-1_KzesLA1YPU25_gr1"><stop offset="0" stop-color="#009fff"></stop><stop offset="1" stop-color="#009fff"></stop></linearGradient><linearGradient x1="26.1655" y1="76.33217" x2="47.4935" y2="97.66017" gradientUnits="userSpaceOnUse" id="color-2_KzesLA1YPU25_gr2"><stop offset="0" stop-color="#009fff"></stop><stop offset="1" stop-color="#009fff"></stop></linearGradient><linearGradient x1="126.49883" y1="76.33217" x2="147.82683" y2="97.66017" gradientUnits="userSpaceOnUse" id="color-3_KzesLA1YPU25_gr3"><stop offset="0" stop-color="#009fff"></stop><stop offset="1" stop-color="#009fff"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><circle cx="24" cy="24" transform="scale(3.58333,3.58333)" r="4" fill="url(#color-1_KzesLA1YPU25_gr1)"></circle><circle cx="10" cy="24" transform="scale(3.58333,3.58333)" r="4" fill="url(#color-2_KzesLA1YPU25_gr2)"></circle><circle cx="38" cy="24" transform="scale(3.58333,3.58333)" r="4" fill="url(#color-3_KzesLA1YPU25_gr3)"></circle></g></g></svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div> <!-- /.megamenu-links -->
-
                 </div>
             </div>
         </nav>
@@ -776,8 +766,7 @@
 
                         <ul class="list-group flex-column d-inline-block submenu">
                             <li class="list-group-item pl-4">
-                                <a href="{{ path('admin_streamer_show', {id: streamers.id}) }}" class="">Information
-                                    de {{ streamers.name }}</a>
+                                <a href="{{ path('admin_streamer_show', {id: streamers.id}) }}" class="">Information de {{ streamers.name }}</a>
                             </li>
                         </ul> <!-- /.submenu -->
                     </li> <!-- /.list-group-item -->
@@ -788,5 +777,21 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
 
 {% endblock %}

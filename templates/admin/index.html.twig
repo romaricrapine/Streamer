@@ -662,8 +662,8 @@
         <nav class="navbar p-0 fixed-top">
             <button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"
                     data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="true"
-                    aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i><span class="ml-3">Dashboard </span>
+                    aria-label="Toggle navigation" disabled>
+                <a href="{{ path('admin_app') }}" style="text-decoration: none"><span class="ml-3">Dashboard</span></a>
                 {% for message in app.flashes('success') %}
                     <span>--- <img src="https://img.icons8.com/fluent/34/000000/info.png"/> --- {{ message}} </span>
                 {% endfor %}
@@ -708,7 +708,7 @@
                                         <a href="{{ path('admin_streamer_new') }}"
                                            class="list-group-item list-group-item-action border-0 pl-4 py-3">Ajouter un
                                             Streamer</a>
-                                        <a href="{{ path('every_streamer_app') }}"
+                                        <a href="{{ path('admin_every_streamer') }}"
                                            class="list-group-item list-group-item-action border-0 pl-4 py-3">Afficher
                                             les Streamers</a>
                                     </div> <!-- /.list-group -->
@@ -725,7 +725,7 @@
                                 </a> <!-- button close -->
                                 <div class="collapse" id="menuTwo" aria-expanded="false" style="">
                                     <div class="list-group border-0">
-                                        <a href="#" class="list-group-item list-group-item-action border-0 pl-4 py-3">Afficher
+                                        <a href="{{ path('admin_support') }}" class="list-group-item list-group-item-action border-0 pl-4 py-3">Afficher
                                             les demandes</a>
                                     </div> <!-- /.list-group -->
                                 </div><!-- /.collapse -->

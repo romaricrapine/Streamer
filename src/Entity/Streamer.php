@@ -33,27 +33,27 @@ class Streamer
     private $discord;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $twitter;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $snapchat;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $instagram;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $youtube;
 
     /**
-     * @ORM\Column(type="text", length=1000)
+     * @ORM\Column(type="string", length=255)
      */
     private $description;
 
@@ -63,7 +63,7 @@ class Streamer
     private $donation;
 
     /**
-     * @ORM\Column(type="text", length=1000)
+     * @ORM\Column(type="string", length=255)
      */
     private $bio;
 
@@ -113,7 +113,7 @@ class Streamer
         return $this->twitter;
     }
 
-    public function setTwitter(string $twitter): self
+    public function setTwitter(?string $twitter): self
     {
         $this->twitter = $twitter;
 
@@ -125,7 +125,7 @@ class Streamer
         return $this->snapchat;
     }
 
-    public function setSnapchat(string $snapchat): self
+    public function setSnapchat(?string $snapchat): self
     {
         $this->snapchat = $snapchat;
 
@@ -137,7 +137,7 @@ class Streamer
         return $this->instagram;
     }
 
-    public function setInstagram(string $instagram): self
+    public function setInstagram(?string $instagram): self
     {
         $this->instagram = $instagram;
 
@@ -149,7 +149,7 @@ class Streamer
         return $this->youtube;
     }
 
-    public function setYoutube(string $youtube): self
+    public function setYoutube(?string $youtube): self
     {
         $this->youtube = $youtube;
 

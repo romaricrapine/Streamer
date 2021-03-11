@@ -662,7 +662,8 @@
         <nav class="navbar p-0 fixed-top">
             <button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"
                     data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="true"
-                    aria-label="Toggle navigation" disabled><span class="ml-3">Les Petits Streamer FR </span>
+                    aria-label="Toggle navigation" disabled>
+                <a href="{{ path('home_app') }}" style="text-decoration: none"><span class="ml-3">Les Petits Streamer FR</span></a>
             </button>
 
             <div><a class="navbar-brand px-1" href="{{ path('home_app') }}"><img
@@ -671,16 +672,16 @@
 
             </div> <!-- /.right-links -->
 
-    <div class="megamenu">
-        <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
-            <div class="megamenu-links">
-                <div class="row">
+            <div class="megamenu">
+                <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
+                    <div class="megamenu-links">
+                        <div class="row">
 
-                </div> <!-- /.row -->
-            </div> <!-- /.megamenu-links -->
-        </div>
-    </div>
-    </nav>
+                        </div> <!-- /.row -->
+                    </div> <!-- /.megamenu-links -->
+                </div>
+            </div>
+        </nav>
     </div> <!-- END TOP NAVBAR -->
 
     <div data-component="sidebar">
@@ -751,12 +752,6 @@
                 {% endfor %}
             </ul> <!-- /.first-menu -->
         </div> <!-- /.sidebar -->
-    </div>
-
-    <div class="wp-content">
-        <div class="container-fluid">
-            Mettre quelques choses ici
-        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -588,7 +588,7 @@
         [data-component=sidebar] .submenu {
             position: fixed;
             left: 160px;
-            width: 195px;
+            width: 300px;
             top: 60px;
             background-color: #009fff;
             height: 100vw;
@@ -662,115 +662,22 @@
         <nav class="navbar p-0 fixed-top">
             <button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"
                     data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="true"
-                    aria-label="Toggle navigation" disabled><span class="ml-3">{{ stream.name }}</span>
+                    aria-label="Toggle navigation" disabled>
+                <a href="{{ path('home_app') }}" style="text-decoration: none"><span class="ml-3">Les Petits Streamer FR</span></a>
             </button>
 
-            <div>
-                <a class="navbar-brand px-1" href="{{ path('home_app') }}">
-                    <img src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
-                         class="d-inline-block mt-1" alt="AgentFire Logo" height="40">
-                </a>
-            </div>
+            <div><a class="navbar-brand px-1" href="{{ path('home_app') }}"><img
+                            src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
+                            class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
 
+            </div> <!-- /.right-links -->
 
             <div class="megamenu">
                 <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
-                    <div class="megamenu-links text-black text-center">
-                        <div class="twitch my-5">
-                            <div id="twitch-embed"></div>
-                            <script src="https://embed.twitch.tv/embed/v1.js"></script>
-                            <script type="text/javascript">
-                                new Twitch.Embed("twitch-embed", {
-                                    width: "80%",
-                                    height: 600,
-                                    channel: "{{ stream.twitch }}",
-                                    theme: "dark",
-                                });
-                            </script>
-                        </div>
+                    <div class="megamenu-links">
+                        <div class="row">
 
-                        <hr class="my-5">
-
-                        <div class="card-container">
-                            <div class="card-info discord">
-                                <div class="pic"></div>
-                                <button>
-                                </button>
-                            </div>
-                            <div class="card-info twitter">
-                                <div class="pic"></div>
-                                <button>
-                                </button>
-                            </div>
-                            <div class="card-info snapchat">
-                                <div class="pic"></div>
-                                <button>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-container">
-                            <div class="card-info instagram">
-                                <div class="pic"></div>
-                                <button>
-                                </button>
-                            </div>
-                            <div class="card-info youtube">
-                                <div class="pic"></div>
-                                <button>
-                                </button>
-                            </div>
-                            <div class="card-info donation">
-                                <div class="pic"></div>
-                                <button>
-                                </button>
-                            </div>
-                        </div>
-
-                            {% if stream.twitch %}
-                                <p>Regarder sur Twitch :
-                                    <a href="https://www.twitch.tv/{{ stream.twitch }}">{{ stream.twitch }}</a>
-                                </p>
-                            {% endif %}
-                            {% if stream.discord %}
-                                <p>Ajouter sur Discord :
-                                    {{ stream.discord }}
-                                </p>
-                            {% endif %}
-                            {% if stream.twitter %}
-                                <p>Suivre sur Twitter :
-                                    <a href="https://www.twitter.com/{{ stream.twitter }}">{{ stream.twitter }}</a>
-                                </p>
-                            {% endif %}
-                            {% if stream.snapchat %}
-                                <p>Ajouter sur Snapchat :
-                                    <a href="https://www.snapchat.com/add/{{ stream.snapchat }}">{{ stream.snapchat }}</a>
-                                </p>
-                            {% endif %}
-                            {% if stream.instagram %}
-                                <p>Suivre sur Instagram :
-                                    <a href="https://www.instagram.com/{{ stream.instagram }}">{{ stream.instagram }}</a>
-                                </p>
-                            {% endif %}
-                            {% if stream.youtube %}
-                                <p>Regarder sur Youtube :
-                                    <a href="{{ stream.youtube }}">{{ stream.name }}</a>
-                                </p>
-                            {% endif %}
-                            {% if stream.donation %}
-                                <p>Faire un don à {{ stream.name }} :
-                                    <a href="{{ stream.donation }}">{{ stream.name }}</a>
-                                </p>
-                            {% endif %}
-                            {% if stream.description %}
-                                <p>Description de {{ stream.name }} :
-                                    <span>{{ stream.description }}</span>
-                                </p>
-                            {% endif %}
-                            {% if stream.bio %}
-                                <p>Bio de {{ stream.name }} :
-                                    <span>{{ stream.bio }}</span>
-                                </p>
-                            {% endif %}
+                        </div> <!-- /.row -->
                     </div> <!-- /.megamenu-links -->
                 </div>
             </div>
@@ -788,9 +695,58 @@
 
                         <ul class="list-group flex-column d-inline-block submenu">
                             <li class="list-group-item pl-4">
-                                <a href="{{ path('streamer_app', {id: streamers.id}) }}" class="">Information
+                                <a href="{{ path('streamer_app', {id: streamers.id}) }}">Information
                                     de {{ streamers.name }}</a>
                             </li>
+                            {% if streamers.twitch %}
+                                <li class="list-group-item pl-4">
+                                    <p>Regarder sur Twitch :
+                                        <a href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.twitch }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.discord %}
+                                <li class="list-group-item pl-4">
+                                    <p>Ajouter sur Discord : <br>
+                                        {{ streamers.discord }}
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.twitter %}
+                                <li class="list-group-item pl-4">
+                                    <p>Suivre sur Twitter :
+                                        <a href="https://www.twitter.com/{{ streamers.twitter }}">{{ streamers.twitter }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.snapchat %}
+                                <li class="list-group-item pl-4">
+                                    <p>Ajouter sur Snapchat :
+                                        <a href="https://www.snapchat.com/add/{{ streamers.snapchat }}">{{ streamers.snapchat }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.instagram %}
+                                <li class="list-group-item pl-4">
+                                    <p>Suivre sur Instagram :
+                                        <a href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.instagram }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.youtube %}
+                                <li class="list-group-item pl-4">
+                                    <p>Regarder sur Youtube :
+                                        <a href="{{ streamers.youtube }}">{{ streamers.name }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
+                            {% if streamers.donation %}
+                                <li class="list-group-item pl-4">
+                                    <p>Faire un don à
+                                        <a href="{{ streamers.donation }}">{{ streamers.name }}</a>
+                                    </p>
+                                </li>
+                            {% endif %}
                         </ul> <!-- /.submenu -->
                     </li> <!-- /.list-group-item -->
                 {% endfor %}

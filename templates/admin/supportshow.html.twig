@@ -6,7 +6,13 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
 
     <style>
         @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
@@ -675,7 +681,7 @@
             <button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"
                     data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="true"
                     aria-label="Toggle navigation" disabled>
-                <a href="{{ path('admin_app') }}" style="text-decoration: none"><span class="ml-3">{{ stream.name }}</span></a>
+                <a href="{{ path('admin_app') }}" style="text-decoration: none"><span class="ml-3">Dashboard</span></a>
             </button>
 
             <div><a class="navbar-brand px-1" href="{{ path('admin_app') }}"><img
@@ -702,64 +708,41 @@
             <div class="megamenu">
                 <div class="navbar-collapse collapse show" id="megamenu-dropdown" aria-expanded="true" style="">
                     <div class="megamenu-links text-black">
-                        <ul>
-                            {% for streamers in streamer %}
-                                    <ul>
-                                        {% if streamers.twitch %}
-                                            <li>
-                                                <p>Regarder sur Twitch :
-                                                    <a href="https://www.twitch.tv/{{ streamers.twitch }}">{{ streamers.twitch }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.discord %}
-                                            <li>
-                                                <p>Ajouter sur Discord : <br>
-                                                    {{ streamers.discord }}
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.twitter %}
-                                            <li>
-                                                <p>Suivre sur Twitter :
-                                                    <a href="https://www.twitter.com/{{ streamers.twitter }}">{{ streamers.twitter }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.snapchat %}
-                                            <li>
-                                                <p>Ajouter sur Snapchat :
-                                                    <a href="https://www.snapchat.com/add/{{ streamers.snapchat }}">{{ streamers.snapchat }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.instagram %}
-                                            <li>
-                                                <p>Suivre sur Instagram :
-                                                    <a href="https://www.instagram.com/{{ streamers.instagram }}">{{ streamers.instagram }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.youtube %}
-                                            <li>
-                                                <p>Regarder sur Youtube :
-                                                    <a href="{{ streamers.youtube }}">{{ streamers.name }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                        {% if streamers.donation %}
-                                            <li>
-                                                <p>Faire un don à
-                                                    <a href="{{ streamers.donation }}">{{ streamers.name }}</a>
-                                                </p>
-                                            </li>
-                                        {% endif %}
-                                    </ul> <!-- /.submenu -->
-                                <a href="{{ path('admin_streamer_edit', {id: streamers.id}) }}">Modifier</a>
-                            {% endfor %}
-                        </ul> <!-- /.first-menu -->
+                        <div class="limiter">
+                            <div class="container-table100">
+                                <div class="wrap-table100">
+                                    <div class="table100 ver1 m-b-110">
+                                        <div class="table100-head">
+                                            <table>
+                                                <thead>
+                                                <tr class="row100 head">
+                                                    <th class="cell100 column1">Nom/Prénom/Pseudo</th>
+                                                    <th class="cell100 column2">Sujet</th>
+                                                    <th class="cell100 column3">Message</th>
+                                                    <th class="cell100 column4">Reçus le</th>
+                                                    <th class="cell100 column5">Action</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="table100-body js-pscroll">
+                                            <table>
+                                                <tbody>
+                                                <tr class="row100 body">
+                                                    <td class="cell100 column1">{{ support.name }}</td>
+                                                    <td class="cell100 column2">{{ support.subject }}</td>
+                                                    <td class="cell100 column3">{{ support.message }}</td>
+                                                    <td class="cell100 column4">{{ support.createdAt }}</td>
+                                                    <td class="cell100 column5">Supprimer / Répondre</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div> <!-- /.megamenu-links -->
-
                 </div>
             </div>
         </nav>
@@ -788,5 +771,21 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
 
 {% endblock %}
